@@ -23,8 +23,9 @@ class SecondLevelViewControllerA: UIViewController {
     }
 }
 
+// NOT called if the modal is full screen
 extension SecondLevelViewControllerA {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        coordinator?.dismiss(coordinator)
+        coordinator?.dismiss()
     }
 }

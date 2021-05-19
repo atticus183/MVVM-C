@@ -3,58 +3,63 @@ import UIKit
 
 class ChildCoordinatorA: Coordinator {
     var childCoordinator: Coordinator?
-
-    //The root navigation view controller
-    var navigationController: UINavigationController = {
-        let nav = UINavigationController()
-        nav.navigationBar.prefersLargeTitles = true
-        //Customize the navigation controller here
-        return nav
-    }()
-
     weak var parentCoordinator: Coordinator?
 
-    init(parentCoordinator: Coordinator?) {
+    var navigationController: UINavigationController?
+
+    init(parentCoordinator: Coordinator) {
         self.parentCoordinator = parentCoordinator
     }
 
-//    convenience init(navigationController: UINavigationController) {
-//        self.init()
-//        self.navigationController = navigationController
-//    }
-
     deinit {
-        print("\(String(describing: ChildCoordinatorA.self)) deinit called.")
+        print("\(String(describing: Self.self)) deinit called.")
     }
 
-    // MARK: Child Coordinator method
-//    func childDidFinish(_ child: Coordinator?) {
-//        for (index, coordinator) in childCoordinators.enumerated() {
-//            if coordinator === child {
-//                childCoordinators.remove(at: index)
-//                break
-//            }
-//        }
+    // Only used if the presenting vc is full screen and the delegate method is not called.
+//    func didFinish() {
+//        parentCoordinator?.navigationController?.dismiss(animated: true, completion: nil)
+//        navigationController?.dismiss(animated: true, completion: nil)
+//        parentCoordinator?.childCoordinator = nil
 //    }
 
-    // MARK: Routes to ViewControllers
+    // MARK: Routes
 
-    func showFirstLevelViewControllerA() {
+    func showFirstLevelViewControllerA(style: PresentationStyle) {
         let viewController = FirstLevelViewControllerA()
         viewController.coordinator = self
-        viewController.title = String(describing: FirstLevelViewControllerA.self)
-        navigationController.setViewControllers([viewController], animated: true)
-        parentCoordinator?.navigationController.present(navigationController, animated: true, completion: nil)
+        switch style {
+        case .present:
+            navigationController = UINavigationController(rootViewController: viewController)
+            navigationController?.modalPresentationStyle = .fullScreen
+            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
+        case .push:
+            parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
-    func showFirstLevelViewControllerB() {
+    func showFirstLevelViewControllerB(style: PresentationStyle) {
         let viewController = FirstLevelViewControllerB()
         viewController.coordinator = self
-        viewController.title = String(describing: FirstLevelViewControllerB.self)
-        navigationController.pushViewController(viewController, animated: true)
+        switch style {
+        case .present:
+            navigationController = UINavigationController(rootViewController: viewController)
+            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
+        case .push:
+            if navigationController!.viewControllers.count > 0 {
+                navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
+
+    //Creates child coordinator
+    func showSecondLevelViewControllerA() {
+        childCoordinator = ChildCoordinatorB(parentCoordinator: self)
+        (childCoordinator as? ChildCoordinatorB)?.showSecondLevelViewControllerB(style: .present)
     }
 }
 
 
 
-extension UIViewController: UIAdaptivePresentationControllerDelegate {}
+

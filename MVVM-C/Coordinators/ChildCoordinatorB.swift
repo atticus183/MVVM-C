@@ -3,16 +3,9 @@ import UIKit
 
 class ChildCoordinatorB: Coordinator {
     var childCoordinator: Coordinator?
-
-    //The root navigation view controller
-    var navigationController: UINavigationController = {
-        let nav = UINavigationController()
-        nav.navigationBar.prefersLargeTitles = true
-        //Customize the navigation controller here
-        return nav
-    }()
-
     weak var parentCoordinator: Coordinator?
+
+    var navigationController: UINavigationController?
 
     init(parentCoordinator: Coordinator?) {
         self.parentCoordinator = parentCoordinator
@@ -24,18 +17,31 @@ class ChildCoordinatorB: Coordinator {
 
     // MARK: Routes to ViewControllers
 
-    func showSecondLevelViewControllerA() {
+    func showSecondLevelViewControllerA(style: PresentationStyle) {
         let viewController = SecondLevelViewControllerA()
         viewController.coordinator = self
-        viewController.title = String(describing: SecondLevelViewControllerA.self)
-        navigationController.setViewControllers([viewController], animated: true)
-        parentCoordinator?.navigationController.present(navigationController, animated: true, completion: nil)
+        switch style {
+        case .present:
+            navigationController = UINavigationController(rootViewController: viewController)
+            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
+        case .push:
+            parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
-    func showSecondLevelViewControllerB() {
+    func showSecondLevelViewControllerB(style: PresentationStyle) {
         let viewController = SecondLevelViewControllerB()
         viewController.coordinator = self
-        viewController.title = String(describing: SecondLevelViewControllerB.self)
-        navigationController.pushViewController(viewController, animated: true)
+        switch style {
+        case .present:
+            navigationController = UINavigationController(rootViewController: viewController)
+            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
+        case .push:
+            if navigationController!.viewControllers.count > 0 {
+                navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
     }
 }

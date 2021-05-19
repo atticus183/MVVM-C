@@ -26,6 +26,8 @@ class FirstLevelViewControllerA: UIViewController {
 
         navigationController?.presentationController?.delegate = self
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeBtnTapped))
+
         nextButton.center = view.center
         view.addSubview(nextButton)
     }
@@ -35,12 +37,17 @@ class FirstLevelViewControllerA: UIViewController {
     }
 
     @objc func buttonTapped() {
-        (coordinator as? ChildCoordinatorA)?.showFirstLevelViewControllerB()
+        (coordinator as? ChildCoordinatorA)?.showFirstLevelViewControllerB(style: .push)
+    }
+
+    @objc func closeBtnTapped() {
+        coordinator?.dismiss()
     }
 }
 
+// NOT called if the modal is full screen
 extension FirstLevelViewControllerA {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        coordinator?.dismiss(coordinator)
+        coordinator?.dismiss()
     }
 }

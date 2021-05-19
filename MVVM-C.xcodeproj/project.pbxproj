@@ -13,6 +13,7 @@
 		12642745264240330037A4FF /* FirstLevelViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12642744264240330037A4FF /* FirstLevelViewControllerB.swift */; };
 		12642748264240450037A4FF /* SecondLevelViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12642747264240450037A4FF /* SecondLevelViewControllerA.swift */; };
 		1264274B264240510037A4FF /* SecondLevelViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264274A264240510037A4FF /* SecondLevelViewControllerB.swift */; };
+		12A638E426549EA800883C95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A638E326549EA800883C95 /* Extensions.swift */; };
 		12BDD1622640F27B0007328B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BDD1612640F27B0007328B /* AppDelegate.swift */; };
 		12BDD1642640F27C0007328B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BDD1632640F27C0007328B /* SceneDelegate.swift */; };
 		12BDD1662640F27C0007328B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BDD1652640F27C0007328B /* HomeViewController.swift */; };
@@ -29,6 +30,7 @@
 		12642744264240330037A4FF /* FirstLevelViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLevelViewControllerB.swift; sourceTree = "<group>"; };
 		12642747264240450037A4FF /* SecondLevelViewControllerA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLevelViewControllerA.swift; sourceTree = "<group>"; };
 		1264274A264240510037A4FF /* SecondLevelViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLevelViewControllerB.swift; sourceTree = "<group>"; };
+		12A638E326549EA800883C95 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		12BDD15E2640F27B0007328B /* MVVM-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12BDD1612640F27B0007328B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12BDD1632640F27C0007328B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				12BDD17B2640F5E40007328B /* Views */,
 				12BDD1612640F27B0007328B /* AppDelegate.swift */,
 				12BDD1632640F27C0007328B /* SceneDelegate.swift */,
+				12A638E326549EA800883C95 /* Extensions.swift */,
 				12BDD16A2640F27D0007328B /* Assets.xcassets */,
 				12BDD16C2640F27D0007328B /* LaunchScreen.storyboard */,
 				12BDD16F2640F27D0007328B /* Info.plist */,
@@ -180,6 +183,7 @@
 				12642745264240330037A4FF /* FirstLevelViewControllerB.swift in Sources */,
 				12BDD18C2640F7010007328B /* Coordinator.swift in Sources */,
 				12BDD1662640F27C0007328B /* HomeViewController.swift in Sources */,
+				12A638E426549EA800883C95 /* Extensions.swift in Sources */,
 				12642748264240450037A4FF /* SecondLevelViewControllerA.swift in Sources */,
 				120A87F7264259EF005CA867 /* ChildCoordinatorA.swift in Sources */,
 				12BDD1622640F27B0007328B /* AppDelegate.swift in Sources */,

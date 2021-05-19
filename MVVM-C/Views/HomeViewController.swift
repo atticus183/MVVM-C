@@ -30,10 +30,12 @@ class HomeViewController: UIViewController {
         presentationController?.delegate = self
     }
 
+    deinit {
+        print("\(String(describing: Self.self)) deinit")
+    }
+
     @objc func buttonTapped() {
-        let childCoordinator = ChildCoordinatorA(parentCoordinator: coordinator)
-        coordinator?.childCoordinator = childCoordinator
-        childCoordinator.showFirstLevelViewControllerA()
+        (coordinator as? BaseCoordinator)?.showFirstLevelViewControllerA()
     }
 }
 

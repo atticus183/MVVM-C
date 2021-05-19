@@ -42,14 +42,13 @@ class FirstLevelViewControllerB: UIViewController {
     }
 
     @objc func addBtnTapped() {
-        let childCoordinator = ChildCoordinatorB(parentCoordinator: coordinator)
-        coordinator?.childCoordinator = childCoordinator
-        childCoordinator.showSecondLevelViewControllerA()
+        (coordinator as? ChildCoordinatorA)?.showSecondLevelViewControllerA()
     }
 }
 
+// NOT called if the modal is full screen
 extension FirstLevelViewControllerB {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        coordinator?.dismiss(coordinator)
+        coordinator?.dismiss()
     }
 }

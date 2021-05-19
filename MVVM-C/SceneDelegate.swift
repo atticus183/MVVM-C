@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         appCoordinator = BaseCoordinator(window: window!)
-        appCoordinator?.showHome()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
