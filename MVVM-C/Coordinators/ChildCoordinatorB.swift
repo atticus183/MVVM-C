@@ -20,28 +20,12 @@ class ChildCoordinatorB: Coordinator {
     func showSecondLevelViewControllerA(style: PresentationStyle) {
         let viewController = SecondLevelViewControllerA()
         viewController.coordinator = self
-        switch style {
-        case .present:
-            navigationController = UINavigationController(rootViewController: viewController)
-            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
-        case .push:
-            parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
-        }
+        navigate(to: viewController, with: style)
     }
 
     func showSecondLevelViewControllerB(style: PresentationStyle) {
         let viewController = SecondLevelViewControllerB()
         viewController.coordinator = self
-        switch style {
-        case .present:
-            navigationController = UINavigationController(rootViewController: viewController)
-            parentCoordinator?.navigationController?.present(navigationController!, animated: true, completion: nil)
-        case .push:
-            if navigationController!.viewControllers.count > 0 {
-                navigationController?.pushViewController(viewController, animated: true)
-            } else {
-                parentCoordinator?.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+        navigate(to: viewController, with: style)
     }
 }
