@@ -26,7 +26,7 @@ extension Coordinator {
     func navigateBack() {
         navigationController?.popViewController(animated: true)
     }
-    
+
     func navigate(to viewController: UIViewController, with presentationStyle: PresentationStyle) {
         switch presentationStyle {
         case .present:

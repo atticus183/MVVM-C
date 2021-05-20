@@ -23,6 +23,7 @@ class FirstLevelViewControllerB: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
+        title = String(describing: Self.self)
 
         backButton.center = view.center
         view.addSubview(backButton)

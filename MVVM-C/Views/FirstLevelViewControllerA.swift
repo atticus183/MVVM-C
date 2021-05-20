@@ -23,6 +23,7 @@ class FirstLevelViewControllerA: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
+        title = String(describing: Self.self)
 
         navigationController?.presentationController?.delegate = self
 

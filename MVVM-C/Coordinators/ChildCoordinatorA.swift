@@ -39,7 +39,7 @@ class ChildCoordinatorA: Coordinator {
     //Creates child coordinator
     func showSecondLevelViewControllerA() {
         childCoordinator = ChildCoordinatorB(parentCoordinator: self)
-        (childCoordinator as? ChildCoordinatorB)?.showSecondLevelViewControllerB(style: .present)
+        (childCoordinator as? ChildCoordinatorB)?.showSecondLevelViewControllerA(style: .present)
     }
 }
 

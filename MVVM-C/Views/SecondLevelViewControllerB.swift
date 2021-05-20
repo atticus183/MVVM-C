@@ -14,6 +14,7 @@ class SecondLevelViewControllerB: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
+        title = String(describing: Self.self)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationController?.presentationController?.delegate = self

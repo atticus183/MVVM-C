@@ -14,6 +14,7 @@ class SecondLevelViewControllerA: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemRed
+        title = String(describing: Self.self)
 
         navigationController?.presentationController?.delegate = self
     }

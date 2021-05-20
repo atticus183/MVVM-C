@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
+        title = String(describing: Self.self)
 
         presentButton.center = view.center
         view.addSubview(presentButton)
